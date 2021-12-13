@@ -1,7 +1,18 @@
-<h1>Alex's portfolio</h1>
-<a href="/admin">Admin</a>
+{% extends 'portfolio/base.html' %}
+{% block content %}
+    <h1>Alex's portfolio</h1>
+
+{% load static %}
+
+<a href="{% static 'portfolio/resume.pdf' %}" target="_blank">Резюме</a>
 <br>
-<a href="/blog">blog</a>
+<a href={% url 'blog:all_blogs' %}>Blog</a>
+<br>
+
+<img src="{% static 'portfolio/415716948.jpeg' %}">
+<br>
+
+
 {% for project in projects %}
 
     <h2>{{ project.title }}</h2>
@@ -11,4 +22,7 @@
     <br><a href="{{ project.url }}">Link</a>
     {% endif %}
 {% endfor %}
+
+{% endblock %}
+
 
