@@ -23,9 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-j)5%qa^y3@s5r#5s^9p878t$=2ufz!7_=2t1+2=#lr%1am3yi_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['alexv92.pythonanywhere.com']
+ALLOWED_HOSTS = ['alexv92.pythonanywhere.com',
+                 '127.0.0.1',
+                 ]
 
 
 # Application definition
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'portfolio',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,5 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

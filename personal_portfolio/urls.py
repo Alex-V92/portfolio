@@ -21,9 +21,11 @@ from portfolio import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('adm/', admin.site.urls),
     path('', views.homepage, name='home'),
+    path('contact', views.contactView, name='contact'),
     path('blog/', include('blog.urls')),
+    path('captcha/', include('captcha.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
