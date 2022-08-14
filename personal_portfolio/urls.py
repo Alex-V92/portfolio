@@ -17,15 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.decorators.cache import cache_page
 from portfolio import views
-
 
 urlpatterns = [
     path('adm/', admin.site.urls),
-    path('', views.homepage, name='home'),
+    path('', cache_page(60)(views.homepage), name='home'),
     path('contact', views.contactView, name='contact'),
     path('blog/', include('blog.urls')),
     path('captcha/', include('captcha.urls')),
+    path('success/', views.success, name='success')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

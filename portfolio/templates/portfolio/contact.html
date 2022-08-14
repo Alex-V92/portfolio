@@ -8,6 +8,8 @@
             <h4>Напишите мне, если у вас есть вопросы</h4>
         </div>
     </div>
+
+
     <form method="POST" class="field">
         {% csrf_token %}
         <div>{{ form.first_name }}</div>
@@ -15,11 +17,9 @@
         <div>{{ form.message }}</div>
         <div>{{ form.captcha }}</div>
 
-        {#            <div  >{{ form.as_p }}</div>#}
-        <button type="submit">Отправить</button>
+        <button type="submit" class="btn btn-success">Отправить</button>
     </form>
-    </div>
-    </div>
+
 
 {% endblock %}
 

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError
+from django.urls import reverse_lazy
 from .models import Project
 from .forms import ContactForm
 
@@ -24,11 +25,15 @@ def contactView(request):
             message = "\n".join(body.values())
             try:
                 send_mail(subject, message,
-                          'admin@alexv92.pythonanywhere.com',
+                          'alexvl92@yandex.ru',
                           ['alexej.92@yandex.ru'])
             except BadHeaderError:
                 return HttpResponse('Найден некорректный заголовок')
-            return redirect("home")
+            return redirect("success")
 
     form = ContactForm()
     return render(request, "portfolio/contact.html", {'form': form})
+
+
+def success(request):
+    return render(request, 'portfolio/success.html')
